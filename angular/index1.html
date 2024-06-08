@@ -1,0 +1,106 @@
+
+
+
+
+<input type="text" [(ngModel)]="title1" />
+<p>{{title1}} </p>
+
+<ul>
+    <!---print construter item -->
+    <li>id: {{products.id}}</li>
+    <li>name: {{products.name}}</li>
+</ul>
+    <!---print construter interface item -->
+     <p>{{products1.name}}</p>
+
+    <!---change link by click -->
+   
+<button (click)="changelink('https://www.semicolon.site')">change link</button>
+<br>
+<a [href]="url">{{lebel}}</a> <br>
+<br>
+
+    <!---change img by click -->
+ 
+<button (click)="changeImage('./assets/images/2.png')"> change Image</button> <br><br>
+<img [src]="img" alt=""  /> 
+
+
+
+   <!---ngIF -->
+  
+<div *ngIf="!paid; then content2; else content1" >
+    <p>
+تم بيعه
+</p>
+
+</div>
+<ng-template #content2> متوفر</ng-template>
+<ng-template #content1> غير متوفر</ng-template>
+
+  <!---ngFor -->
+  <!---
+<ul>
+    <li *ngFor=" let item of phone">{{item}}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let item of product2">{{item.id}},{{item.name}},{{item.price}}</li>
+</ul>
+-->
+
+    <div *ngFor="let item of product " >
+        <div *ngIf="item.price<3000">
+            {{item.id}},{{item.name}},{{item.price}}
+        </div>
+    </div>
+
+
+
+
+   <!---ngFor table with search input -->
+<label for="p1">enter</label>
+<input type="text" id="p1" [(ngModel)]="prodname">
+
+   <table  class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>price</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of find(product)">
+            
+                <td>{{ item.id }}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+          
+           
+        </tr> 
+    </tbody>
+   </table>
+
+
+<br>
+<br>
+   <table  class="table table-striped">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>price</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of find(product)">
+            
+                <td [ngClass]="{'price_max':item.price>=2500}">{{item.id}}</td>
+                <td [ngClass]="{'price_max':item.price>=2500}">{{item.name}}</td>
+                <td [ngClass]="{'price_max':item.price>=2500}">{{item.price}}</td>
+          
+           
+        </tr> 
+    </tbody>
+   </table>
